@@ -13,18 +13,27 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+# from django.contrib import admin
+# from user.views import UserViewSet
+#
+# # 一般不这样搞
+# # # 将视图集绑定到两个单独的视图
+# # user_list = UserViewSet.as_view({"get": "list"})
+# # user_detail = UserViewSet.as_view({"get": "retrieve"})
+#
+# from rest_framework.routers import DefaultRouter
+#
+# # 建议这样使用
+# router = DefaultRouter()
+# router.register(r'users', UserViewSet, base_name="user")
+# urlpatterns = router.urls
+from django.conf.urls import url
 from django.contrib import admin
-from django.urls import path
-from user.views import UserViewSet
 
-# 一般不这样搞
-# # 将视图集绑定到两个单独的视图
-# user_list = UserViewSet.as_view({"get": "list"})
-# user_detail = UserViewSet.as_view({"get": "retrieve"})
+from comment import views
 
-from rest_framework.routers import DefaultRouter
 
-# 建议这样使用
-router = DefaultRouter()
-router.register(r'users', UserViewSet, base_name="user")
-urlpatterns = router.urls
+urlpatterns = [
+    url(r'admin/', admin.site.urls),
+    url(r'article_list/', views.article_list),
+]
