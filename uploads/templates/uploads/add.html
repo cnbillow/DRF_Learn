@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+</head>
+<body>
+    <h1>创建新用户</h1>
+    <form action="/uploads/add/" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        <label for="username">用户名：</label>
+        <input type="text" id="username" name="username" /> <br/><br/>
+        <label for="img">用户头像：</label>
+        <input type="file" name="img" id="img" /> <br/><br/>
+        <label for="introduce">用户信息：</label>
+        <input type="file" name="introduce" id="introduce" /> <br/><br/>
+
+        <input type="submit" value="提交">
+    </form>
+
+</body>
+</html>

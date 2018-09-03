@@ -27,13 +27,16 @@ Including another URLconf
 # router = DefaultRouter()
 # router.register(r'users', UserViewSet, base_name="user")
 # urlpatterns = router.urls
-from django.conf.urls import url
 from django.contrib import admin
+from django.urls import path, include
 
 from comment import views
 
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
-    url(r'admin/', admin.site.urls),
-    url(r'article_list/', views.article_list),
-]
+    path(r'admin/', admin.site.urls),
+    path(r'article_list/', views.article_list),
+    path(r'uploads/', include('uploads.urls'))
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

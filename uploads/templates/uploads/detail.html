@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+</head>
+<body>
+    {% for user in user_list %}
+        <h1>用户名：{{ user.name }}</h1>
+        {# 加载图片内容一定要添加url        #}
+        <img src="{{ user.img.url }}" alt="用户头像">
+            <p>图片名称：{{ user.img.name }}</p>
+            <p>图片大小：{{ user.img.size }}</p>
+
+        <br/>
+        <br/>
+        <p>个人信息：{{ user.introduce }}</p>
+         {% for line in user.introduce.readlines %}
+            {# decode不能添加括号#}
+             <p>{{ line.decode }}</p>
+         {% endfor %}
+    {% endfor %}
+</body>
+</html>
